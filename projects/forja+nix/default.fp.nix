@@ -15,6 +15,7 @@
     ./rust.fp.nix
     ./apple.fp.nix
     ./checks.fp.nix
+    ./devShells.fp.nix
   ];
 
   options.perSystem = flake-parts-lib.mkPerSystemOption ({

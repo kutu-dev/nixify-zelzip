@@ -28,12 +28,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} ({flake-parts-lib, ...}: {
       imports = [./projects/forja+nix/default.fp.nix];
 
-      perSystem = {
-        pkgs,
-        inputs',
-        self',
-        ...
-      }: {
+      perSystem = {...}: {
         forja.rootPath = ./.;
 
         forja.inputs = with inputs; {
@@ -41,22 +36,6 @@
           inherit rustOverlay;
           inherit crane;
           inherit advisoryDb;
-        };
-
-        devShells.default = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [
-            alejandra
-            taplo
-            cargo-deny
-            cargo-hakari
-            wasm-pack
-            wasm-bindgen-cli
-            self'.packages.rustToolchain
-            self'.packages.forjaCli
-            addlicense
-            glow
-            nix-output-monitor
-          ];
         };
       };
     });

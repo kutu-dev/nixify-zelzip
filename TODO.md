@@ -1,10 +1,6 @@
 # TODO (Global)
-- Proper devShell with LSPs:
-    - Nix
-    - Rust
-    - TOML
-
 - Nix FP files module:
+    - Set perSystem.files.gitToplevel
     - Gitignore building
     - README.md building
 

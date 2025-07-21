@@ -153,9 +153,7 @@
                filename="$(basename --suffix "-macos-x86_64" "$x86_64_binary_path")"
 
                 ${pkgs.llvmPackages.bintools-unwrapped}/bin/llvm-lipo "$x86_64_binary_path" "$aarch64_binary_path" -create -output "$out/bin/$filename-macos-universal"
-
         done
-
       '';
 
     addArtifactsToArgs = cargoArtifacts: crateArgs: crateArgs // {inherit cargoArtifacts;};
