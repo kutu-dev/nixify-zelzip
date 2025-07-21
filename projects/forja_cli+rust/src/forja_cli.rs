@@ -1,3 +1,9 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+// SPDX-License-Identifier: MPL-2.0
+
 //! Management tool for multiple tasks on the monorepo.
 
 use color_eyre::Result;
@@ -5,44 +11,44 @@ use tracing::info;
 use util::setup_logging_for_cli;
 
 mod cli;
+mod root_path;
 mod todo;
 
 fn main() -> Result<()> {
-    println!("HELLO WORLD");
+    color_eyre::install()?;
     setup_logging_for_cli();
 
+    let root_path = root_path::get_root_path()?;
     let matches = cli::get_matches();
 
-    if let Some(matches) = matches.subcommand_matches("todo") {
-        todo::print_tasks();
+    if let Some(_matches) = matches.subcommand_matches("todo") {
+        todo::print_tasks(&root_path)?;
     }
 
-    if let Some(matches) = matches.subcommand_matches("generate-ignores") {
-        info!("IGNORES");
+    if let Some(_matches) = matches.subcommand_matches("check") {
+        info!("Checking with the Nix build system");
+        cmd_lib::run_cmd! {
+            nix flake check --log-format internal-json $root_path |& nom --json
+        }?;
     }
 
-    if let Some(matches) = matches.subcommand_matches("check") {
-        info!("CHECK");
-    }
+    if let Some(_matches) = matches.subcommand_matches("fix") {
+        info!("Trying to fix as many files as possible");
 
-    if let Some(matches) = matches.subcommand_matches("fix") {
-        info!("FIX");
-    }
+        cmd_lib::run_cmd! {
+            cd $root_path;
 
-    if let Some(matches) = matches.subcommand_matches("dev") {
-        info!("DEV");
-    }
+            alejandra .;
+            taplo format --colors always .;
 
-    if let Some(matches) = matches.subcommand_matches("build") {
-        info!("BUILD");
-    }
+            cargo clippy --fix --allow-dirty;
+            cargo fmt;
 
-    if let Some(matches) = matches.subcommand_matches("docs") {
-        info!("DOCS");
-    }
+            cargo hakari generate;
+            cargo hakari manage-deps;
 
-    if let Some(matches) = matches.subcommand_matches("test") {
-        info!("TEST");
+            addlicense -s -l mpl .;
+        }?
     }
 
     Ok(())

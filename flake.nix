@@ -44,15 +44,18 @@
         };
 
         devShells.default = pkgs.mkShell {
-          nativeBuildInputs = [
-            pkgs.alejandra
-            pkgs.taplo
-            pkgs.cargo-deny
-            pkgs.cargo-hakari
-            pkgs.llvmPackages.bintools-unwrapped
-            pkgs.patchelf
-            pkgs.wasm-pack
-            pkgs.wasm-bindgen-cli
+          nativeBuildInputs = with pkgs; [
+            alejandra
+            taplo
+            cargo-deny
+            cargo-hakari
+            wasm-pack
+            wasm-bindgen-cli
+            self'.packages.rustToolchain
+            self'.packages.forjaCli
+            addlicense
+            glow
+            nix-output-monitor
           ];
         };
       };

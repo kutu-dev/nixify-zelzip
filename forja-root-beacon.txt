@@ -1,0 +1,5 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@  DO NOT MOVE OR RENAME!  @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+This is a dummy file to allow the Forja CLI to find the root of the monorepo.

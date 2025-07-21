@@ -21,4 +21,13 @@ publish = true
 # are managed by hakari.
 
 ### BEGIN HAKARI SECTION
+[dependencies]
+log = { version = "0.4", default-features = false, features = ["std"] }
+
+[build-dependencies]
+log = { version = "0.4", default-features = false, features = ["std"] }
+proc-macro2 = { version = "1" }
+quote = { version = "1" }
+syn = { version = "2", features = ["extra-traits", "full", "visit", "visit-mut"] }
+
 ### END HAKARI SECTION

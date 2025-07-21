@@ -1,14 +1,4 @@
-# TODO
-- Clean up `packages.fp.nix`.
-- Rust toolchain with WASM32 in devShell (expose as self'.packages.rustToolchain)
-- Nix Check:
-    - Addlicense
-
-- In forja CLI:
-    - Taplo format
-    - Cargo format
-    - Addlicense
-
+# TODO (Global)
 - Proper devShell with LSPs:
     - Nix
     - Rust
@@ -19,3 +9,4 @@
     - README.md building
 
 - GitHub Actions
+- VSCode integration

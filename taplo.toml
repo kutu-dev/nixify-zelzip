@@ -1,0 +1,1 @@
+exclude = ["projects/workspace_hack+rust/**/*"]
