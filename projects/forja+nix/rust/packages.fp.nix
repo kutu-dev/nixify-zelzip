@@ -203,7 +203,7 @@
         |> (package: pkgs.forja.cross.windows.x86_64.callPackage package {})
         |> modifySuffixOfDerivationBinaries "-windows-x86_64.exe" ".exe";
 
-        wasm32 = crateArgs
+        wasmNpm = crateArgs
         // {
           cargoExtraArgs = "";
 
@@ -224,7 +224,8 @@
             wasm-bindgen-cli
           ];
         }
-        # TODO(TRACK: )
+        # TODO(TRACK: https://github.com/ipetkov/crane/issues/873): |>
+        #   There is no mechanism on Crane to filter incompatible dependencies
         #|> addArtifactsToArgs cargoArtifacts.wasm32
         |> makeNixPackage craneLibs.wasm32
         |> (package: pkgs.callPackage package {});
@@ -247,7 +248,7 @@
     } else {};
 
     libPackages = if hasLib then {
-      "${nixPackageName}Wasm32" = wasm32;
+      "${nixPackageName}WasmNpm" = wasmNpm;
     } else {};
     in binPackages // libPackages;
 
