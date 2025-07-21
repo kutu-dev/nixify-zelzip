@@ -1,0 +1,34 @@
+[package]
+version = "2.0.0"
+
+name = "zelzip_util"
+description = "This library is only intended for internal usage at the ZEL.ZIP monorepo. Please avoid using it directly."
+
+publish = true
+
+authors.workspace = true
+license.workspace = true
+edition.workspace = true
+homepage.workspace = true
+repository.workspace = true
+
+[lib]
+path = "src/util.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+byteorder.workspace = true
+aes.workspace = true
+cbc.workspace = true
+sha1.workspace = true
+sha2.workspace = true
+crypto-common.workspace = true
+tracing-subscriber.workspace = true
+zelzip_workspace_hack = { version = "0.1", path = "../workspace_hack+rust" }
+wasm-bindgen.workspace = true
+
+[dev-dependencies]
+hex-literal = "1.0.0"
+
+[lints]
+workspace = true

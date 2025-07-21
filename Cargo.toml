@@ -1,0 +1,69 @@
+[profile.release]
+strip = true
+lto = true
+
+[workspace]
+resolver = "2"
+members = [
+  # NOTE: Changing this to concrete paths will make Forja fail due to missing members on the isolate environment
+  "projects/*+rust*",
+]
+
+[workspace.package]
+edition = "2021"
+
+authors = ["The ZELZIP team <contact@zelzip.dev>"]
+
+license = "MPL-2.0"
+
+homepage = "https://zelzip.dev"
+repository = "https://github.com/ZELZIP/ZELZIP"
+
+[workspace.dependencies]
+util = { package = "zelzip_util", path = "projects/util+rust" }
+
+# TODO(TRACK:): `cargo hakari` is not able to detect that the hack has been added as a workspace dependencies
+# workspace_hack = { package = "zelzip_workspace_hack", path = "projects/workspace_hack+rust" }
+
+thiserror = "2.0.12"
+byteorder = "1.5.0"
+aes = "0.8.4"
+cbc = { version = "0.1.2", features = ["std"] }
+block-padding = "0.3.3"
+cfg-if = "1.0.0"
+bitflags = "2.9.1"
+sha1 = "0.10.6"
+sha2 = "0.10.9"
+crypto-common = "0.1.6"
+crc = "3.3.0"
+wasm-bindgen = "0.2.84"
+console_error_panic_hook = "0.1.7"
+wasm-bindgen-test = "0.3.34"
+hmac = "0.12.1"
+ctr = "0.9.2"
+derive_jserror = "0.1.0"
+clap = { version = "4.5.40", features = [ "cargo", "derive" ] }
+cmd_lib = "1.9.6"
+color-eyre = "0.6.5"
+tracing = "0.1.41"
+tracing-subscriber = "0.3.19"
+
+[workspace.lints.rust]
+missing_docs = "warn"
+
+[workspace.lints.clippy]
+single_match = "warn"
+single_match_else = "warn"
+needless_match = "warn"
+needless_late_init = "warn"
+redundant_pattern_matching = "warn"
+redundant_pattern = "warn"
+redundant_guards = "warn"
+collapsible_match = "warn"
+match_single_binding = "warn"
+match_same_arms = "warn"
+match_ref_pats = "warn"
+match_bool = "warn"
+needless_bool = "deny"
+unwrap_used = "warn"
+use_self = "warn"
