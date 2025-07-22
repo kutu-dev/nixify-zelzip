@@ -22,11 +22,14 @@
 
     advisoryDb.url = "github:rustsec/advisory-db";
     advisoryDb.flake = false;
+
+    files.url = "github:mightyiam/files";
   };
 
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} ({flake-parts-lib, ...}: {
       imports = [./projects/forja+nix/default.fp.nix];
+      debug = true;
 
       perSystem = {...}: {
         forja.rootPath = ./.;
@@ -36,6 +39,7 @@
           inherit rustOverlay;
           inherit crane;
           inherit advisoryDb;
+          inherit files;
         };
       };
     });

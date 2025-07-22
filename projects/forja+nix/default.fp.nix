@@ -6,6 +6,8 @@
 {
   pkgs,
   flake-parts-lib,
+  config,
+  inputs,
   ...
 }: {
   imports = [
@@ -16,6 +18,7 @@
     ./apple.fp.nix
     ./checks.fp.nix
     ./devShells.fp.nix
+    ./files.fp.nix
   ];
 
   options.perSystem = flake-parts-lib.mkPerSystemOption ({

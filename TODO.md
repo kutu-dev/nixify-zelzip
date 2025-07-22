@@ -1,8 +1,7 @@
 # TODO (Global)
-- Nix FP files module:
-    - Set perSystem.files.gitToplevel
-    - Gitignore building
-    - README.md building
+- Add icebrk
+- Print inline TODOs in forja CLI
 
-- GitHub Actions
 - VSCode integration
+    - VSCode workspace
+- GitHub Actions

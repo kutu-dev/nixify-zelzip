@@ -48,6 +48,8 @@ fn main() -> Result<()> {
             cargo hakari manage-deps;
 
             addlicense -s -l mpl .;
+
+            nix run .#generateFiles
         }?
     }
 

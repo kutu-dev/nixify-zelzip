@@ -37,6 +37,15 @@
         '';
       };
 
+      files = lib.mkOption {
+        type = lib.types.package;
+
+        description = ''
+          The resolved input of the Files Nix flake-parts module.
+          Project homepage: "https://github.com/mightyiam/files".
+        '';
+      };
+
       advisoryDb = lib.mkOption {
         type = lib.types.package;
 

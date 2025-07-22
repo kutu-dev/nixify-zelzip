@@ -6,11 +6,14 @@
   to regenerate the file run `forja fix` or `nix run .#generateFiles`.
 -->
 
-# Rust Util Library
+# ZELZIP
 [Usage guide](https://docs.zel.zip/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
 
-## 🚨 UNSTABLE API 🚨
-This library is only intended for internal usage at the [ZELZIP monorepo](https://github.com/ZELZIP/ZELZIP). [Semver](https://semver.org/) is not respected. **DO NOT USE IF YOU ARE AN OUTSIDER**.
+Tools and libraries for the videogame homebrew.
+
+Welcome to the ZELZIP code monorepo, feel free to take a look to our software at our [main website](https://zelzip.dev) and [user-facing documentation](https://docs.zelzip.dev). If you want to collaborate with the project learn more at our [meta documentation](https::/meta.docs.zelzip.dev).
+
+ZELZIP is also the provider of a [wiki](https://wiki.zelzip.dev) where you can find information about obscure systems and formats of the homebrew scene.
 
 ## Credits
 Every person that has contributed to ZELZIP is credited on our [credits page](https://zelzip.dev/credits).
