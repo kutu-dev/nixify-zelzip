@@ -1,0 +1,40 @@
+[package]
+version = "1.0.2"
+
+name = "zelzip_icebrk"
+description = "Implementation of the different algorithms used on Nintendo consoles to generate the parental control master key."
+
+publish = true
+
+keywords = ["generator", "key", "master-key", "algorightm"]
+categories = ["algorithms"]
+
+authors.workspace = true
+license.workspace = true
+edition.workspace = true
+homepage.workspace = true
+repository.workspace = true
+
+# TODO(TRACK: https://github.com/rustwasm/wasm-pack/issues/1501): Fix for Bulk Memory Operation on WASM
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ["--enable-bulk-memory", "--enable-nontrapping-float-to-int"]
+
+[lib]
+path = "src/icebrk.rs"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+crc.workspace = true
+wasm-bindgen.workspace = true
+sha2.workspace = true
+hmac.workspace = true
+thiserror.workspace = true
+aes.workspace = true
+ctr.workspace = true
+derive_jserror.workspace = true
+
+[dev-dependencies]
+wasm-bindgen-test.workspace = true
+
+[lints]
+workspace = true

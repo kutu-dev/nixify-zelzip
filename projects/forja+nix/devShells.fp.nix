@@ -26,6 +26,11 @@
         nixd
         vscodium
         tokei
+        # Using a pinned version is recommended by the nixpkgs docs,
+        #   see: https://nixos.org/manual/nixpkgs/stable/#javascript-pnpm
+        pnpm_9
+        marksman
+        vscode-langservers-extracted
       ];
     };
   };

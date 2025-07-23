@@ -35,9 +35,9 @@
         hasLib = false;
       })
       // (crane.makeCratePackages {
-        nixPackageName = "utilRust";
-        cargoPackageName = "zelzip_util";
-        includeProjects = ["util+rust" "workspace_hack+rust"];
+        nixPackageName = "icebrk";
+        cargoPackageName = "zelzip_icebrk";
+        includeProjects = ["icebrk+rust" "workspace_hack+rust"];
         hasBin = false;
         hasLib = true;
       });
