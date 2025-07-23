@@ -7,7 +7,7 @@
 -->
 
 # ZELZIP Rust Util Library
-[Usage guide](https://docs.zel.zip/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
+[Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
 
 ## 🚨 UNSTABLE API 🚨
 This library is only intended for internal usage at the [ZELZIP monorepo](https://github.com/ZELZIP/ZELZIP). [Semver](https://semver.org/) is not respected. **DO NOT USE IF YOU ARE AN OUTSIDER**.

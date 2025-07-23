@@ -6,8 +6,10 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-// @ts-check
-import { defineConfig } from 'astro/config';
-
-// https://astro.build/config
-export default defineConfig({});
+export enum AlgorithmVersion {
+  v0,
+  v1,
+  v2,
+  v3,
+  v4,
+}

@@ -19,13 +19,13 @@
     ];
 
     pnpmWorkspaces = [
-      "@zelzip/workspace-root"
-      "@zelzip/icebrk-web"
+      "@zelzip/workspace_root"
+      "@zelzip/icebrk_web"
     ];
 
     pnpmDeps = pkgs.pnpm.fetchDeps {
       pname = "workspaceDeps";
-      hash = "sha256-5a6naLHN7BBifDPWmued2++Hr0342Vb82kQh0fqLXiw=";
+      hash = "sha256-ljiUG0wziWRdFAt9fAcVxhMjcg4RF6MTVFfpRyiJpN8=";
 
       inherit src;
       inherit pnpmWorkspaces;
@@ -80,6 +80,6 @@
       '';
     });
 
-    packages.icebrkWeb = makePnpmAstroPackage "@zelzip/icebrk-web" ["icebrk_web+web"];
+    packages.icebrkWeb = makePnpmAstroPackage "@zelzip/icebrk_web" ["icebrk_web+web"];
   };
 }

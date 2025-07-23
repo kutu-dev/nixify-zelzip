@@ -7,7 +7,7 @@
 -->
 
 # ZELZIP Icebrk Library
-[Usage guide](https://docs.zel.zip/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
+[Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
 
 Implementation of the different algorithms used on Nintendo consoles to generate the parental control master key.
 

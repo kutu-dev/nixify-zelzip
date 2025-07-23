@@ -1,5 +1,5 @@
 {
-  "name": "@zelzip/workspace-root",
+  "name": "@zelzip/workspace_root",
   "private": true,
   "devDependencies": {
     "@eslint/css": "catalog:",
