@@ -215,11 +215,11 @@
         installPhaseCommand = '''';
 
         buildPhaseCargoCommand = ''
-          mkdir -p "$out/pkg"
+          mkdir -p "$out"
 
           # TODO(TRACK: https://github.com/ipetkov/crane/issues/362): |>
           #   wasm-pack expects a valid home directory
-          HOME=$(mktemp -d fake-home-XXXXXXXXXX) ${pkgs.wasm-pack}/bin/wasm-pack build ./projects/${builtins.elemAt includeProjects 0} --out-dir $out/pkg
+          HOME=$(mktemp -d fake-home-XXXXXXXXXX) ${pkgs.wasm-pack}/bin/wasm-pack build ./projects/${builtins.elemAt includeProjects 0} --out-dir $out
         '';
 
         nativeBuildInputs = with pkgs; [

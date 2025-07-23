@@ -15,21 +15,21 @@
 
     npmPackages =
       config.forja.rootPath
-      |> lib.fileset.fileFilter ({name, ...}: name == "package.template.json")
+      |> lib.fileset.fileFilter ({name, ...}: name == "package.template.json5")
       |> lib.fileset.toList
       |> map (
         path: let
           relativeParentPath = lib.path.removePrefix rootPath (dirOf path);
-          path_ = relativeParentPath + "/package.json";
+          path_ = relativeParentPath + "/package.json5";
 
-          manifest = lib.attrsets.recursiveUpdate (builtins.fromJson path) {
+          manifest = lib.attrsets.recursiveUpdate (builtins.fromJSON (builtins.readFile path)) {
             dependencies = {
               "@zelzip/icebrk" = self'.packages.icebrkWasmNpm;
             };
           };
         in {
           inherit path_;
-          drv = pkgs.writeText "README.md" (builtins.toJSON manifest);
+          drv = pkgs.writeText "package.json5" (builtins.toJSON manifest);
         }
       );
   in {

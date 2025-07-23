@@ -35,7 +35,7 @@
       pkgs.stdenv.mkDerivation (finalAttrs: let
         mainProject = builtins.elemAt includeProjects 0;
 
-        packageManifest = lib.importJSON (rootPath + "/projects/${mainProject}/package.json");
+        packageManifest = lib.importJSON (rootPath + "/projects/${mainProject}/package.json5");
       in {
         pname = packageManifest.name;
         version = packageManifest.version;
