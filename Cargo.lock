@@ -1101,6 +1101,7 @@ dependencies = [
  "thiserror",
  "wasm-bindgen",
  "wasm-bindgen-test",
+ "zelzip_workspace_hack",
 ]
 
 [[package]]
@@ -1123,7 +1124,11 @@ dependencies = [
 name = "zelzip_workspace_hack"
 version = "0.1.0"
 dependencies = [
+ "cipher",
+ "digest",
+ "inout",
  "log",
+ "once_cell",
  "proc-macro2",
  "quote",
  "syn",

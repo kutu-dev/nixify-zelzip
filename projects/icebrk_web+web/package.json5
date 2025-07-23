@@ -1,0 +1,1 @@
+{"dependencies":{"@zelzip/icebrk":"/nix/store/kwp1qc42imql8zdp3a9ivwkmp7dxb6gi-zelzip_icebrk-1.0.2","astro":"catalog:"},"name":"@zelzip/icebrk-web","private":true,"scripts":{"astro":"astro","dev":"astro dev","forja:build":"astro build","preview":"astro preview"},"type":"module","version":"0.0.1"}

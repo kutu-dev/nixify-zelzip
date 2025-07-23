@@ -8,6 +8,7 @@
     inputs.files.flakeModules.default
     ./files/readme.fp.nix
     ./files/gitignore.fp.nix
+    ./files/npmPackage.fp.nix
   ];
 
   perSystem = {

@@ -45,7 +45,7 @@ fn main() -> Result<()> {
             cargo fmt;
 
             cargo hakari generate;
-            cargo hakari manage-deps;
+            cargo hakari manage-deps --yes;
 
             addlicense -s -l mpl .;
 

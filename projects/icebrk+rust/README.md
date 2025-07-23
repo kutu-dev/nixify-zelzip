@@ -6,11 +6,19 @@
   to regenerate the file run `forja fix` or `nix run .#generateFiles`.
 -->
 
-# ZELZIP Rust Util Library
+# ZELZIP Icebrk Library
 [Usage guide](https://docs.zel.zip/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
 
-## 🚨 UNSTABLE API 🚨
-This library is only intended for internal usage at the [ZELZIP monorepo](https://github.com/ZELZIP/ZELZIP). [Semver](https://semver.org/) is not respected. **DO NOT USE IF YOU ARE AN OUTSIDER**.
+Implementation of the different algorithms used on Nintendo consoles to generate the parental control master key.
+
+## Getting Started
+
+This library is available on:
+- Rust, check the [crate documentation](https://docs.rs/zelzip_icebrk).
+- JavaScript or TypeScript via WASM, check the [typed NPM library documentation](https://wasm.icebrk.docs.zelzip.dev).
+
+## Limitations
+- No support for the Nintendo Switch v4 algorithm as it requires a Device ID value only obtainable using homebrew tools, [these same tools also allows for disabling any sort of parental control](https://gbatemp.net/threads/reset-parental-control-nx-an-easy-to-reset-the-pin-for-controls.556891/) making the support of this version redundant.
 
 ## Credits
 Every person that has contributed to ZELZIP is credited on our [credits page](https://zelzip.dev/credits).

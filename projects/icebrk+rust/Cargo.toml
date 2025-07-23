@@ -32,6 +32,7 @@ thiserror.workspace = true
 aes.workspace = true
 ctr.workspace = true
 derive_jserror.workspace = true
+zelzip_workspace_hack = { version = "0.1", path = "../workspace_hack+rust" }
 
 [dev-dependencies]
 wasm-bindgen-test.workspace = true
