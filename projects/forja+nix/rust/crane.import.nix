@@ -79,16 +79,15 @@
     };
   };
 
-  # Fileset with only the required files for Rust compilation,
-  # where `crateName` is the name of the directory inside `//projects` where the package is stored
-  makeFileSetForCrate = cratesNames:
+  # Fileset with only the required files for Rust compilation
+  makeFileSetForCrate = includeProjects:
     lib.fileset.toSource {
       root = workspacePath;
       fileset = lib.fileset.unions ([
           (workspacePath + "/Cargo.toml")
           (workspacePath + "/Cargo.lock")
         ]
-        ++ (map (crateName: workspacePath + "/projects/${crateName}") cratesNames));
+        ++ (map (projectName: workspacePath + "/projects/${projectName}") includeProjects));
     };
 
   # `rustPackageName` is the name of the Rust package as defined in the `Cargo.toml` file,

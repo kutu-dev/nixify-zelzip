@@ -19,6 +19,7 @@
     ./checks.fp.nix
     ./devShells.fp.nix
     ./files.fp.nix
+    ./web.fp.nix
   ];
 
   options.perSystem = flake-parts-lib.mkPerSystemOption ({

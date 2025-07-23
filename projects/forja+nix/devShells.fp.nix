@@ -3,6 +3,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #
 # SPDX-License-Identifier: MPL-2.0
+
 {...}: {
   perSystem = {
     pkgs,
@@ -26,9 +27,8 @@
         nixd
         vscodium
         tokei
-        # Using a pinned version is recommended by the nixpkgs docs,
-        #   see: https://nixos.org/manual/nixpkgs/stable/#javascript-pnpm
-        pnpm_9
+        pnpm
+        nodejs
         marksman
         vscode-langservers-extracted
       ];
