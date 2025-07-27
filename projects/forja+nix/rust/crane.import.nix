@@ -15,7 +15,7 @@
   workspacePath = config.forja.rootPath;
 
   commonArgs = {
-    src = libs.native.cleanCargoSource workspacePath;
+    src = workspacePath;
     strictDeps = true;
   };
 
@@ -217,7 +217,7 @@
         buildPhaseCargoCommand = ''
           mkdir -p "$out"
 
-          # TODO(TRACK: https://github.com/ipetkov/crane/issues/362): |>
+          # TODO(TRACK: https://github.com/ipetkov/crane/issues/362): |>|
           #   wasm-pack expects a valid home directory
           HOME=$(mktemp -d fake-home-XXXXXXXXXX) ${pkgs.wasm-pack}/bin/wasm-pack build ./projects/${builtins.elemAt includeProjects 0} --out-dir $out
         '';
@@ -226,7 +226,7 @@
           wasm-bindgen-cli
         ];
       }
-      # TODO(TRACK: https://github.com/ipetkov/crane/issues/873): |>
+      # TODO(TRACK: https://github.com/ipetkov/crane/issues/873): |>|
       #   There is no mechanism on Crane to filter incompatible dependencies
       #|> addArtifactsToArgs cargoArtifacts.wasm32
       |> makeNixPackage libs.wasm32

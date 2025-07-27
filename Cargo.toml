@@ -22,8 +22,15 @@ repository = "https://github.com/ZELZIP/ZELZIP"
 [workspace.dependencies]
 util = { package = "zelzip_util", path = "projects/util+rust" }
 
-# TODO(TRACK:): `cargo hakari` is not able to detect that the hack has been added as a workspace dependencies
-# workspace_hack = { package = "zelzip_workspace_hack", path = "projects/workspace_hack+rust" }
+# TODO(IMPROVE): |>|
+#   `cargo hakari` is not able to detect that the hack has
+#   been added as a workspace dependencies
+#     - I'M IDENTATED
+#       - I'M IDENTATED
+#   workspace_hack = {
+#     package = "zelzip_workspace_hack",
+#     path = "projects/workspace_hack+rust"
+#   }
 
 thiserror = "2.0.12"
 byteorder = "1.5.0"

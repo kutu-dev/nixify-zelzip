@@ -23,11 +23,21 @@
       "@zelzip/icebrk_web"
     ];
 
+    pnpmDepsSrc = lib.fileset.toSource {
+      root = rootPath;
+
+      fileset = lib.fileset.unions [
+        (rootPath + "/pnpm-lock.yaml")
+        (rootPath + "/pnpm-workspace.yaml")
+        (lib.fileset.fileFilter ({name, ...}: name == "package.json5") rootPath)
+      ];
+    };
+
     pnpmDeps = pkgs.pnpm.fetchDeps {
       pname = "workspaceDeps";
       hash = "sha256-ljiUG0wziWRdFAt9fAcVxhMjcg4RF6MTVFfpRyiJpN8=";
 
-      inherit src;
+      src = pnpmDepsSrc;
       inherit pnpmWorkspaces;
     };
 
