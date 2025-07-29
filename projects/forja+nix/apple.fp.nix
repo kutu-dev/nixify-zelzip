@@ -18,8 +18,6 @@
         mkdir -p "$out"
 
         cp -r "$src"/* "$out"
-
-        ls "$out"
       '';
     };
   };

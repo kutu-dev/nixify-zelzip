@@ -30,6 +30,7 @@
         nodejs
         marksman
         vscode-langservers-extracted
+        yq
       ];
     };
   };

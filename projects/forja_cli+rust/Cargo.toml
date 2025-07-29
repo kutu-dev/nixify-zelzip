@@ -24,6 +24,10 @@ tracing.workspace = true
 util.workspace = true
 walkdir.workspace = true
 zelzip_workspace_hack = { version = "0.1", path = "../workspace_hack+rust" }
+url.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+colored.workspace = true
 
 [lints]
 workspace = true

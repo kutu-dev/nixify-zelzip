@@ -22,11 +22,10 @@ repository = "https://github.com/ZELZIP/ZELZIP"
 [workspace.dependencies]
 util = { package = "zelzip_util", path = "projects/util+rust" }
 
-# TODO(IMPROVE): |>|
-#   `cargo hakari` is not able to detect that the hack has
-#   been added as a workspace dependencies
-#     - I'M IDENTATED
-#       - I'M IDENTATED
+# TODO(IMPROVE): `cargo-hakari` doesn't work with `[workspace.dependencies]`
+#   `cargo-hakari` is not able to detect that the hack dep
+#   been added as a workspace dependencies.
+#
 #   workspace_hack = {
 #     package = "zelzip_workspace_hack",
 #     path = "projects/workspace_hack+rust"
@@ -55,6 +54,10 @@ color-eyre = "0.6.5"
 tracing = "0.1.41"
 tracing-subscriber = "0.3.19"
 walkdir = "2.5.0"
+url = "2.5.4"
+serde = { version = "1.0.219", features = ["derive"] }
+reqwest = { version = "0.12.22", features = ["blocking", "json"] }
+colored = "3.0.0"
 
 [workspace.lints.rust]
 missing_docs = "warn"

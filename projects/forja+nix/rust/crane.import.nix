@@ -35,7 +35,6 @@
   macosCommonExtraArgs = {
     SDKROOT = "${self'.packages.appleSdk}";
 
-    #
     RUSTFLAGS = "-C link-args=-L${pkgs.libiconv}/lib";
 
     nativeBuildInputs = with pkgs; [
@@ -212,13 +211,15 @@
         # Avoid build failure due to not put build logs to `cargoBuildLog`,
         # not relevant in this case as there is no install phase
         doNotPostBuildInstallCargoBinaries = true;
-        installPhaseCommand = '''';
+        installPhaseCommand = "";
 
         buildPhaseCargoCommand = ''
           mkdir -p "$out"
 
-          # TODO(TRACK: https://github.com/ipetkov/crane/issues/362): |>|
-          #   wasm-pack expects a valid home directory
+          # TODO(FIX): `wasm-pack` expects a valid home directory
+          #   Check:
+          #   - https://github.com/ipetkov/crane/issues/362
+
           HOME=$(mktemp -d fake-home-XXXXXXXXXX) ${pkgs.wasm-pack}/bin/wasm-pack build ./projects/${builtins.elemAt includeProjects 0} --out-dir $out
         '';
 
@@ -226,8 +227,10 @@
           wasm-bindgen-cli
         ];
       }
-      # TODO(TRACK: https://github.com/ipetkov/crane/issues/873): |>|
-      #   There is no mechanism on Crane to filter incompatible dependencies
+      # TODO(FIX): There is no mechanism on Crane to filter incompatible dependencies
+      #  Check:
+      #  - https://github.com/ipetkov/crane/issues/873
+      #
       #|> addArtifactsToArgs cargoArtifacts.wasm32
       |> makeNixPackage libs.wasm32
       |> (package: pkgs.callPackage package {});
