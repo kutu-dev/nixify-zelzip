@@ -1,3 +1,9 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+// SPDX-License-Identifier: MPL-2.0
+
 use url::Url;
 
 #[derive(Debug)]
@@ -11,18 +17,13 @@ pub(crate) enum Resource {
 }
 
 impl Resource {
-    pub fn try_find_resource(text: impl AsRef<str>) -> Option<Resource> {
+    pub fn try_find_resource(text: impl AsRef<str>) -> Option<Self> {
         let url = match Url::parse(text.as_ref()) {
             Ok(url) => url,
             Err(_) => return None,
         };
 
-        let host = match url.host_str() {
-            Some(host) => host,
-
-            // Allowing "host-less" URLs creates lots of unwanted resources
-            None => return None,
-        };
+        let host = url.host_str()?;
 
         if let Some((owner, repository, id)) = Self::try_parse_github_issue(host, url.path()) {
             return Some(Self::GitHubIssue {
@@ -32,7 +33,7 @@ impl Resource {
             });
         }
 
-        Some(Resource::Url(url))
+        Some(Self::Url(url))
     }
 
     fn try_parse_github_issue(host: &str, path: &str) -> Option<(String, String, u32)> {

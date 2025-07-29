@@ -3,11 +3,11 @@
   THIS IS A MACHINE GENERATED FILE
 
   Seeded with the data stored at `README.md.template.nix`,
-  to regenerate the file run `forja fix` or `nix run .#generateFiles`.
+  to regenerate the file run `forja fix` or `forja gen`.
 -->
 
 # ZELZIP
-[Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
+[ZELZIP website](https://zelzip.dev) | [Source code](https://github.com/ZELZIP/ZELZIP)
 
 Tools and libraries for the videogame homebrew.
 

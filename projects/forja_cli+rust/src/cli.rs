@@ -12,5 +12,6 @@ pub(crate) fn get_matches() -> ArgMatches {
         .subcommand(Command::new("todo").about("Print the current tasks to do"))
         .subcommand(Command::new("check").about("Check the quality of the code"))
         .subcommand(Command::new("fix").about("Try to fix issues in the code"))
+        .subcommand(Command::new("gen").about("Regenerate all machine made files"))
         .get_matches()
 }

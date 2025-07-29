@@ -2,7 +2,7 @@
 # THIS IS A MACHINE GENERATED FILE
 #
 # Seeded with the data stored at `//projects/forja+nix/files/ignores/`,
-# to regenerate the file run `forja fix` or `nix run .#generateFiles`.
+# to regenerate the file run `forja fix` or `forja gen`.
 
 **/*~
 

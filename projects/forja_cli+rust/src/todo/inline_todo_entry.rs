@@ -1,3 +1,9 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at https://mozilla.org/MPL/2.0/.
+//
+// SPDX-License-Identifier: MPL-2.0
+
 use crate::todo::resource::Resource;
 use crate::todo::CommentBlock;
 use std::path::PathBuf;
@@ -16,7 +22,7 @@ pub(crate) struct InlineTodoEntry {
 
 impl InlineTodoEntry {
     pub(crate) fn new(block: &CommentBlock) -> Option<Self> {
-        let first_line = match block.comment.get(0) {
+        let first_line = match block.comment.first() {
             Some(first_line) => first_line.trim(),
             None => {
                 return None;
@@ -54,11 +60,10 @@ impl InlineTodoEntry {
         let resources = content
             .iter()
             .flat_map(|line| line.split_whitespace())
-            .map(Resource::try_find_resource)
-            .flatten()
+            .filter_map(Resource::try_find_resource)
             .collect();
 
-        Some(InlineTodoEntry {
+        Some(Self {
             path: block.path.clone(),
             line_number: block.line_number,
             title: String::from(title),

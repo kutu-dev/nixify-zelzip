@@ -22,14 +22,29 @@
           relativeParentPath = lib.path.removePrefix rootPath (dirOf path);
           path_ = relativeParentPath + "/package.json5";
 
-          manifest = lib.attrsets.recursiveUpdate (builtins.fromJSON (builtins.readFile path)) {
-            dependencies = {
-              "@zelzip/icebrk" = self'.packages.icebrkWasmNpm;
-            };
-          };
+          warningMessage = ''
+            // DO NOT EDIT!
+            // THIS IS A MACHINE GENERATED FILE
+            //
+            // Seeded with the data stored at `package.template.json5`
+            // to regenerate the file run `forja fix` or `forja gen`.
+          '';
+
+          manifest =
+            path
+            |> builtins.readFile
+            |> builtins.fromJSON
+            |> (oldManifest:
+              lib.attrsets.recursiveUpdate oldManifest {
+                dependencies = {
+                  "@zelzip/icebrk" = self'.packages.icebrkWasmNpm;
+                };
+              })
+            |> builtins.toJSON
+            |> (manifest: warningMessage + manifest);
         in {
           inherit path_;
-          drv = pkgs.writeText "package.json5" (builtins.toJSON manifest);
+          drv = pkgs.writeText "package.json5" manifest;
         }
       );
   in {

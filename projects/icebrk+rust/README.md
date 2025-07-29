@@ -3,11 +3,11 @@
   THIS IS A MACHINE GENERATED FILE
 
   Seeded with the data stored at `README.md.template.nix`,
-  to regenerate the file run `forja fix` or `nix run .#generateFiles`.
+  to regenerate the file run `forja fix` or `forja gen`.
 -->
 
 # ZELZIP Icebrk Library
-[Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
+[Rust reference](https://docs.rs/zelzip_icebrk) | [TypeScript reference](https://typedoc.icebrk.zelzip.dev) | [ZELZIP website](https://zelzip.dev) | [Source code](https://github.com/ZELZIP/ZELZIP)
 
 Implementation of the different algorithms used on Nintendo consoles to generate the parental control master key.
 

@@ -3,11 +3,11 @@
   THIS IS A MACHINE GENERATED FILE
 
   Seeded with the data stored at `README.md.template.nix`,
-  to regenerate the file run `forja fix` or `nix run .#generateFiles`.
+  to regenerate the file run `forja fix` or `forja gen`.
 -->
 
 # ZELZIP Rust Util Library
-[Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
+[ZELZIP website](https://zelzip.dev) | [Source code](https://github.com/ZELZIP/ZELZIP)
 
 ## 🚨 UNSTABLE API 🚨
 This library is only intended for internal usage at the [ZELZIP monorepo](https://github.com/ZELZIP/ZELZIP). [Semver](https://semver.org/) is not respected. **DO NOT USE IF YOU ARE AN OUTSIDER**.

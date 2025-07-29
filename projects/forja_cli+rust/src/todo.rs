@@ -19,14 +19,10 @@ use color_eyre::eyre::OptionExt;
 use color_eyre::owo_colors::OwoColorize;
 use color_eyre::Result;
 use colored::Colorize;
-use core::num;
 use serde::Deserialize;
-use std::fmt::{self, format, write, Display, Formatter};
-use std::io::Cursor;
-use std::path::{self, PathBuf};
-use std::{ffi::OsStr, fs, path::Path};
-use tracing::{field, info};
-use url::Url;
+use std::path::PathBuf;
+use std::{fs, path::Path};
+use tracing::info;
 use walkdir::WalkDir;
 
 #[derive(Deserialize, Debug)]
@@ -64,7 +60,7 @@ pub(crate) fn print_tasks(root_path: &Path) -> Result<()> {
         add_comment_blocks_from_path(&mut blocks, &path, "//")?;
     }
 
-    let entries: Vec<InlineTodoEntry> = blocks.iter().map(InlineTodoEntry::new).flatten().collect();
+    let entries: Vec<InlineTodoEntry> = blocks.iter().filter_map(InlineTodoEntry::new).collect();
 
     // NOTE: The output doesn't have to be valid YAML
     info!("Inline TODO entries:");
@@ -76,7 +72,7 @@ pub(crate) fn print_tasks(root_path: &Path) -> Result<()> {
             info!("      {line}");
         }
 
-        if entry.tags.len() >= 1 {
+        if !entry.tags.is_empty() {
             info!("    Tags:");
         }
 
@@ -91,7 +87,7 @@ pub(crate) fn print_tasks(root_path: &Path) -> Result<()> {
             info!("      - {tag}");
         }
 
-        if entry.resources.len() >= 1 {
+        if !entry.resources.is_empty() {
             info!("    Resources:");
         }
 
@@ -165,7 +161,7 @@ struct SearchResult {
 
 impl SearchResult {
     fn search_in_path(root_path: &Path) -> Result<Self> {
-        let mut search_result = SearchResult {
+        let mut search_result = Self {
             todo_paths: vec![],
             double_slash_prefixed_comments_file_paths: vec![],
             pound_sign_prefixed_comments_file_paths: vec![],
@@ -219,7 +215,7 @@ fn add_comment_blocks_from_path(
     path: &Path,
     comment_start_pattern: &'static str,
 ) -> Result<()> {
-    let text = fs::read_to_string(&path)?;
+    let text = fs::read_to_string(path)?;
     let text = text.split('\n');
 
     let mut current_block: Option<CommentBlock> = None;

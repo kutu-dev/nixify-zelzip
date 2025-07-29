@@ -6,6 +6,11 @@
 {...}: {
   title = "ZELZIP Icebrk Library";
 
+  links = {
+    "Rust reference" = "https://docs.rs/zelzip_icebrk";
+    "TypeScript reference" = "https://typedoc.icebrk.zelzip.dev";
+  };
+
   body =
     # markdown
     ''

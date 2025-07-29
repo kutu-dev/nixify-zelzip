@@ -27,12 +27,13 @@ digest = { version = "0.10", features = ["mac", "std"] }
 inout = { version = "0.1", default-features = false, features = ["std"] }
 log = { version = "0.4", default-features = false, features = ["std"] }
 once_cell = { version = "1" }
+smallvec = { version = "1", default-features = false, features = ["const_generics"] }
 
 [build-dependencies]
 log = { version = "0.4", default-features = false, features = ["std"] }
 once_cell = { version = "1" }
 proc-macro2 = { version = "1" }
 quote = { version = "1" }
-syn = { version = "2", features = ["extra-traits", "full", "visit", "visit-mut"] }
+syn = { version = "2", features = ["extra-traits", "fold", "full", "visit", "visit-mut"] }
 
 ### END HAKARI SECTION

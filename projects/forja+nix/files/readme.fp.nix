@@ -12,17 +12,22 @@
   }: let
     rootPath = config.forja.rootPath;
 
-    makeReadmeHeader = title: ''
+    makeReadmeHeader = title: links: let
+      linksText =
+        links
+        |> lib.attrsets.mapAttrsToList (key: value: "[${key}](${value}) | ")
+        |> lib.lists.foldr (a: b: a + b) "";
+    in ''
       <!--
         DO NOT EDIT!
         THIS IS A MACHINE GENERATED FILE
 
         Seeded with the data stored at `README.md.template.nix`,
-        to regenerate the file run `forja fix` or `nix run .#generateFiles`.
+        to regenerate the file run `forja fix` or `forja gen`.
       -->
 
       # ${title}
-      [Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [Reference](https://docs.rs/zelzip_niiebla) | [ZELZIP website](https://zelzip.dev)
+      ${linksText}[ZELZIP website](https://zelzip.dev) | [Source code](https://github.com/ZELZIP/ZELZIP)
 
     '';
 
@@ -48,7 +53,7 @@
           path_ = relativeParentPath + "/README.md";
 
           templateData = import path {};
-          readmeHeader = makeReadmeHeader templateData.title;
+          readmeHeader = makeReadmeHeader templateData.title (templateData.links or {});
           text = readmeHeader + templateData.body + readmeFooter;
         in {
           inherit path_;

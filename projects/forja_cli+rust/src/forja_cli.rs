@@ -25,6 +25,14 @@ fn main() -> Result<()> {
         todo::print_tasks(&root_path)?;
     }
 
+    if let Some(_matches) = matches.subcommand_matches("gen") {
+        info!("Generating machine provided files...");
+        cmd_lib::run_cmd! {
+            cd $root_path;
+            nix run .#generateFiles
+        }?;
+    }
+
     if let Some(_matches) = matches.subcommand_matches("check") {
         info!("Checking with the Nix build system");
         cmd_lib::run_cmd! {
@@ -35,6 +43,8 @@ fn main() -> Result<()> {
     if let Some(_matches) = matches.subcommand_matches("fix") {
         info!("Trying to fix as many files as possible");
 
+        // `addlicense` can fail to due a bug in which it assumes
+        // that any directory with a dot in its name is a file
         cmd_lib::run_cmd! {
             cd $root_path;
 
@@ -47,7 +57,7 @@ fn main() -> Result<()> {
             cargo hakari generate;
             cargo hakari manage-deps --yes;
 
-            addlicense -s -l mpl .;
+            addlicense -s -l mpl -ignore "**/*.*/**/*" .
 
             nix run .#generateFiles
         }?
