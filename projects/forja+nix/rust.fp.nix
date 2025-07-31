@@ -3,7 +3,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #
 # SPDX-License-Identifier: MPL-2.0
-{flake-parts-lib, ...}: {
+{...}: {
   imports = [
     ./rust/toolchain.fp.nix
     ./rust/packages.fp.nix

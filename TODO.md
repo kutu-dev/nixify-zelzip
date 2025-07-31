@@ -1,6 +1,8 @@
 # TODO (Global)
-- NiiEBLA
-- ViiENTO
+
+| Entrypoint | Usage |
+| --- | --- |
+| 
 
 - Docs
 - Wiki
@@ -12,4 +14,7 @@
 - Prettier
 - GitHub Actions
 
+
 - NixOS server
+
+- ViiENTO

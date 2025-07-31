@@ -9,6 +9,10 @@
   self',
   lib,
 }: rec {
+  webLib = import ../web/webLib.import.nix {
+    inherit config pkgs lib;
+  };
+
   # Reexport to make code cleaner
   libs = config.forja.rust.crane.libs;
 
@@ -235,6 +239,33 @@
       |> makeNixPackage libs.wasm32
       |> (package: pkgs.callPackage package {});
 
+    wasmNpmTypeDoc = pkgs.stdenv.mkDerivation (finalAttrs: {
+      pname = "wasmNpmTypeDoc";
+      version = "1.0.0";
+
+      src = webLib.src;
+      pnpmDeps = webLib.pnpmDeps;
+      pnpmWorkspaces = webLib.pnpmWorkspaces;
+
+      nativeBuildInputs = webLib.commonNativeBuildInputs;
+
+      buildPhase = let
+        entryPoint = "${wasmNpm}/${cargoPackageName}.d.ts";
+      in ''
+        runHook preBuild
+
+        mkdir -p "$out"
+
+        TEMP_DIR=$(mktemp -d fake-tsconfig-XXXXXXXXXX)
+        TSCONFIG_PATH="$TEMP_DIR/tsconfig.fake.json"
+        echo "{ \"files\": [\"${entryPoint}\"] }" > "$TSCONFIG_PATH"
+
+        pnpm typedoc --tsconfig "$TSCONFIG_PATH" --out "$out" ${entryPoint}
+
+        runHook postBuild
+      '';
+    });
+
     binCrossCompiledPackages =
       if ! pkgs.stdenv.isDarwin
       then {
@@ -265,6 +296,7 @@
       if hasLib
       then {
         "${nixPackageName}WasmNpm" = wasmNpm;
+        "${nixPackageName}WasmNpmTypeDoc" = wasmNpmTypeDoc;
       }
       else {};
   in

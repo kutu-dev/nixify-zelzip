@@ -1,0 +1,35 @@
+[package]
+version = "0.3.0"
+
+name = "zelzip_niiebla"
+description = "A parsing library for various Nintendo file formats."
+
+publish = true
+
+keywords = ["homebrew", "binary-format", "parsing", "dumping", "modding"]
+categories = ["parsing"]
+
+authors.workspace = true
+license.workspace = true
+edition.workspace = true
+homepage.workspace = true
+repository.workspace = true
+
+[lib]
+path = "src/niiebla.rs"
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+thiserror.workspace = true
+byteorder.workspace = true
+aes.workspace = true
+cbc.workspace = true
+block-padding.workspace = true
+util.workspace = true
+cfg-if.workspace = true
+bitflags.workspace = true
+sha1.workspace = true
+sha2.workspace = true
+
+[lints]
+workspace = true

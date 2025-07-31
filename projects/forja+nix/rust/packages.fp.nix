@@ -40,6 +40,13 @@
         includeProjects = ["icebrk+rust" "workspace_hack+rust"];
         hasBin = false;
         hasLib = true;
+      })
+      // (crane.makeCratePackages {
+        nixPackageName = "niiebla";
+        cargoPackageName = "zelzip_niiebl";
+        includeProjects = ["niiebla+rust" "util+rust" "workspace_hack+rust"];
+        hasBin = false;
+        hasLib = true;
       });
 
     apps.forjaCli = {

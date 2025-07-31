@@ -2226,6 +2226,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "zelzip_niiebla"
+version = "0.3.0"
+dependencies = [
+ "aes",
+ "bitflags 2.9.1",
+ "block-padding",
+ "byteorder",
+ "cbc",
+ "cfg-if",
+ "sha1",
+ "sha2",
+ "thiserror",
+ "zelzip_util",
+]
+
+[[package]]
 name = "zelzip_util"
 version = "2.0.0"
 dependencies = [
