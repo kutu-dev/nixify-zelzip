@@ -19,6 +19,7 @@
   pnpmWorkspaces = [
     "@zelzip/workspace_root"
     "@zelzip/icebrk_web"
+    "@zelzip/docs"
   ];
 
   pnpmDepsSrc = lib.fileset.toSource {
@@ -27,13 +28,13 @@
     fileset = lib.fileset.unions [
       (rootPath + "/pnpm-lock.yaml")
       (rootPath + "/pnpm-workspace.yaml")
-      (lib.fileset.fileFilter ({name, ...}: name == "package.json5") rootPath)
+      (lib.fileset.fileFilter ({name, ...}: name == "package.json") rootPath)
     ];
   };
 
   pnpmDeps = pkgs.pnpm.fetchDeps {
     pname = "workspaceDeps";
-    hash = "sha256-ljiUG0wziWRdFAt9fAcVxhMjcg4RF6MTVFfpRyiJpN8=";
+    hash = "sha256-otgcFb2jouDS7gpgFGW5kcWNPv91Fnw+TeZ1DgAgpEs=";
 
     src = pnpmDepsSrc;
     inherit pnpmWorkspaces;
@@ -43,7 +44,7 @@
     pkgs.stdenv.mkDerivation (finalAttrs: let
       mainProject = builtins.elemAt includeProjects 0;
 
-      packageManifest = lib.importJSON (rootPath + "/projects/${mainProject}/package.json5");
+      packageManifest = lib.importJSON (rootPath + "/projects/${mainProject}/package.json");
     in {
       pname = packageManifest.name;
       version = packageManifest.version;
@@ -64,6 +65,11 @@
     });
 
   makePnpmAstroPackage = packageName: includeProjects:
+    makePnpmPackage packageName includeProjects ''
+      pnpm --filter="${packageName}" run forja:build --outDir "$out"
+    '';
+
+  makePnpmVitepressPackage = packageName: includeProjects:
     makePnpmPackage packageName includeProjects ''
       pnpm --filter="${packageName}" run forja:build --outDir "$out"
     '';

@@ -1,0 +1,14 @@
+{
+  "name": "@zelzip/docs",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "vitepress": "catalog:",
+    "vue": "catalog:"
+  },
+  "scripts": {
+    "dev": "vitepress dev src",
+    "forja:build": "vitepress build src",
+    "preview": "vitepress preview src"
+  }
+}

@@ -1,0 +1,1 @@
+{"dependencies":{"@zelzip/icebrk":"/nix/store/0kpzih1j6pj2a3m1rlczbccqjq0lf85m-zelzip_icebrk-1.0.2"},"devDependencies":{"vitepress":"catalog:","vue":"catalog:"},"name":"@zelzip/docs","private":true,"scripts":{"dev":"vitepress dev src","forja:build":"vitepress build src","preview":"vitepress preview src"},"version":"1.0.0"}

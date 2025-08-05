@@ -7,7 +7,7 @@
 -->
 
 # ZELZIP NiiEBLA Library
-[Reference](https://docs.rs/zelzip_niiebla) | [Usage guide](https://docs.zel.zip/niiebla/niiebla.html) | [ZELZIP website](https://zelzip.dev) | [Source code](https://github.com/ZELZIP/ZELZIP)
+[Reference](https://docs.rs/zelzip_niiebla) | [Usage guide](https://docs.zelzip.dev/niiebla/niiebla.html) | [ZELZIP website](https://zelzip.dev) | [Source code](https://github.com/ZELZIP/ZELZIP)
 
 A parsing library for various Nintendo file formats. With accurate support for multiple niche entries and extensions (TikV1, Wii Savegame data, etc).
 

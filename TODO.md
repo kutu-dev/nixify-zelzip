@@ -1,9 +1,5 @@
 # TODO (Global)
 
-| Entrypoint | Usage |
-| --- | --- |
-| 
-
 - Docs
 - Wiki
 - Meta
